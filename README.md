@@ -25,21 +25,7 @@ This repository contains an advanced machine learning solution for heart disease
 - **Pandas**, **NumPy**, **Matplotlib**, **Seaborn** (for data manipulation and visualization)
 
 ## Folder Structure
-OptiHeart_Retinal_Insight_to_Cardiac_Health/
-├── dataset/                         # Folder containing image datasets classified by disease type
-│   ├── Base Dataset/                # Folder for the base dataset
-│   ├── Healthy/                     # Folder for healthy images
-│   ├── Heart Attack/                # Folder for heart attack images
-│   ├── Mild Disease/                # Folder for mild disease images
-│   ├── Moderate Disease/            # Folder for moderate disease images
-│   └── Severe Disease/              # Folder for severe disease images
-├── models/                          # Folder containing trained models (.h5 files)
-├── src/                             # Source code (model training, analysis, and Streamlit app)
-│   └── app.ipynb            # Jupyter notebook for model training
-├── app.py                     # Streamlit app file
-├── LICENSE.txt                      # License information
-├── requirements.txt                 # Python dependencies
-└── README.md                        # Project documentation
+![Folder Structure](images/folder_structure.png)
 
 
 ## Installation Instructions  
