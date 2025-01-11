@@ -131,9 +131,9 @@ npx==0.1.2
 numpy==1.26.4
 oauthlib==3.2.2
 omegaconf==2.3.0
-onnx==1.15.0
-onnxruntime==1.15.0
-onnxsim==0.4.36
+onnx==1.15.0 --only-binary :all:
+onnxruntime==1.15.0  --only-binary :all:
+onnxsim==0.4.36  --only-binary :all:
 opencv-contrib-python==4.10.0.84
 opencv-python==4.10.0.84
 opencv-python-headless==4.10.0.84
