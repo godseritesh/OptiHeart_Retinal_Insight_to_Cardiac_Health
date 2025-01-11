@@ -74,7 +74,6 @@ gunicorn==23.0.0
 h11==0.14.0
 h5py==3.11.0
 html5lib==1.1
-htr-pipeline @ file:///E:/Academics/TY-AIDS-2023/Sem%206%20PBL/DP/HTRPipeline/HTRPipeline
 httpcore==1.0.5
 httpx==0.27.0
 huggingface-hub==0.22.2
