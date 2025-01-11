@@ -65,7 +65,6 @@ GitPython==3.1.43
 google-auth==2.29.0
 google-auth-oauthlib==1.0.0
 google-pasta==0.2.0
-gradio==4.28.3
 gradio_client==0.16.0
 graphviz==0.20.3
 grpcio==1.62.2
@@ -265,7 +264,8 @@ tzdata==2024.1
 tzlocal==5.2
 unzip==1.0.0
 uritools==4.0.3
-urllib3==1.26.20
+urllib3>=2.0,<3.0
+gradio==4.28.3
 uvicorn==0.29.0
 virtualenv==20.27.1
 watchdog==4.0.0
