@@ -3,6 +3,7 @@ name: CI
 permissions:
   contents: read
   security-events: write
+  pull-requests: write
 
 on:
   push:
@@ -16,7 +17,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Run Trivy vulnerability scanner
+      - name: Run Trivy (report)
+        uses: aquasecurity/trivy-action@v0.36.0
+        with:
+          scan-type: fs
+          scan-ref: .
+          format: table
+          output: trivy-report.txt
+          severity: HIGH,CRITICAL
+
+      - name: Run Trivy (SARIF)
         uses: aquasecurity/trivy-action@v0.36.0
         with:
           scan-type: fs
@@ -30,3 +40,27 @@ jobs:
         if: always()
         with:
           sarif_file: trivy-results.sarif
+
+      - name: Post Trivy results as PR comment
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const reportPath = 'trivy-report.txt';
+            if (fs.existsSync(reportPath)) {
+              const report = fs.readFileSync(reportPath, 'utf8').trim();
+              if (report.length > 0) {
+                const maxLen = 60000;
+                const body = report.length > maxLen
+                  ? report.substring(0, maxLen) + '\n... (truncated)'
+                  : report;
+                const comment = `## Trivy Vulnerability Scan Results\n\n\`\`\`\n${body}\n\`\`\``;
+                await github.rest.issues.createComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: context.issue.number,
+                  body: comment
+                });
+              }
+            }
